@@ -11,6 +11,7 @@ import { Role, RolesModule } from './roles';
 import { AuthModule } from './auth/auth.module';
 import { PostsModule } from './posts/posts.module';
 import { Post } from './posts';
+import { FilesModule } from './files/files.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { Post } from './posts';
     RolesModule,
     AuthModule,
     PostsModule,
+    FilesModule,
   ],
   // controllers: [AppController],
   // providers: [AppService],

@@ -10,8 +10,10 @@ import {
 import { User } from 'src/users';
 
 interface IPostCreationAttrs {
-  email: string;
-  password: string;
+  title: string;
+  content: string;
+  userId: number;
+  image: string;
 }
 
 @Table({ tableName: 'posts' })
@@ -29,14 +31,14 @@ export class Post extends Model<Post, IPostCreationAttrs> {
   @Column({
     type: DataType.STRING,
     unique: true,
-    allowNull: true,
+    allowNull: false,
   })
   title: string;
 
   // @ApiProperty({ example: '123', description: 'Пароль' })
   @Column({
     type: DataType.STRING,
-    allowNull: true,
+    allowNull: false,
   })
   content: string;
 
