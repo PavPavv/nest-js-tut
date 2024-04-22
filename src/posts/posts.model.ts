@@ -9,7 +9,7 @@ import {
 } from 'sequelize-typescript';
 import { User } from 'src/users';
 
-interface IPostCreationAttrs {
+interface PostCreationAttrs {
   title: string;
   content: string;
   userId: number;
@@ -17,8 +17,7 @@ interface IPostCreationAttrs {
 }
 
 @Table({ tableName: 'posts' })
-export class Post extends Model<Post, IPostCreationAttrs> {
-  // @ApiProperty({ example: '1', description: 'Уникальный идентификатор' })
+export class Post extends Model<Post, PostCreationAttrs> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -27,25 +26,13 @@ export class Post extends Model<Post, IPostCreationAttrs> {
   })
   id: number;
 
-  // @ApiProperty({ example: 'test@test.test', description: 'Эл почта' })
-  @Column({
-    type: DataType.STRING,
-    unique: true,
-    allowNull: false,
-  })
+  @Column({ type: DataType.STRING, unique: true, allowNull: false })
   title: string;
 
-  // @ApiProperty({ example: '123', description: 'Пароль' })
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
+  @Column({ type: DataType.STRING, allowNull: false })
   content: string;
 
-  // @ApiProperty({ example: '123', description: 'Изображение' })
-  @Column({
-    type: DataType.STRING,
-  })
+  @Column({ type: DataType.STRING })
   image: string;
 
   @ForeignKey(() => User)
